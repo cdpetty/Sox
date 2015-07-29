@@ -1,0 +1,31 @@
+{
+  "name": "Sox",
+  "version": "0.0.1",
+  "description": "Terminal chat client using streams and sockets",
+  "main": "client.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cdpetty/Sox.git"
+  },
+  "keywords": [
+    "chat",
+    "stream",
+    "socket",
+    "terminal"
+  ],
+  "author": "Cdpetty",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/cdpetty/Sox/issues"
+  },
+  "homepage": "https://github.com/cdpetty/Sox",
+  "dependencies": {
+    "socket.io-stream": "~0.8.0",
+    "node-notifier": "~4.2.3",
+    "socket.io": "~1.3.6",
+    "socket.io-client": "~1.3.6"
+  }
+}
