@@ -2,6 +2,7 @@ var io = require('socket.io-client');
 var ss = require('socket.io-stream');
 var Readable = require('stream').Readable;
 var readline = require('readline');
+var blessed = require('blessed');
 var rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -15,24 +16,6 @@ var rl = readline.createInterface({
 var socket = io.connect('http://127.0.0.1:3000/chat');
 var stream = ss.createStream();
 
-// function getRoomsSelectionStream(socket){
-//     ss(socket).on('rooms', function(s){
-//         s.pipe(process.stdout);
-//     });
-// }
-
-// ss(socket).on('begin-chat', function(stream){
-//     stream.pipe(process.stdout);
-//     var writeChatStream = ss.createStream();
-//     ss(socket).emit('chat-to-server', writeChatStream);
-//     process.stdin.pipe(writeChatStream);
-// })
-//
-// ss(socket).on('chat-to-client', function(readChatStream){
-//     readChatStream.pipe(stdout);
-// })
-//
-//
 // // rs.pipe(stream);
 function configureSocketForChat(socket){
     console.log('Configuring');
