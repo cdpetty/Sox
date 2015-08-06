@@ -73,6 +73,7 @@ function configureSocketForChat(socket, roomName){
         });
     });
 }
+
 var selectedRoom = '';
 io.of('/chat').on('connection', function(socket) {
 

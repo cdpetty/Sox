@@ -7,7 +7,7 @@ var blessed = require('blessed'),
 
 
 function chat(username, socket, room){
-    this.username = username || 'New User 1';
+    this.username = username || 'New User';
     this.socket = socket;
     this.activeRoom = room || null;
     this.availableRooms = null;
@@ -32,7 +32,6 @@ function chat(username, socket, room){
             this.setStream(null);
             this.emit('rooms-received', rooms);
         });
-
     }
     // Emit a chat sent by the client
     this.emitChat = function(eventName, chat){
@@ -79,39 +78,41 @@ function chat(username, socket, room){
     }
 }
 
-var chat = new chat(u);
-// function init(rooms, username, room){
-//     widgets.rl.setItems(['Room 1', 'Room 2', 'Room 3', 'Room 4']);
-//     widgets.inputText.focus();
-//     widgets.screen.render();
-// }
+var socket = io.connect('http://127.0.0.1:3000/chat');
+var chat = new chat('Username 1', socket, 'Room 1');
+ss(socket).on()
+ss(socket).emit('')
 
 
-// function configureEventListeners(widgets){
-//
-//     widgets.inputText.on('submit', function(data) {
-//         if (data && data.length !== 0) {
-//             widgets.chatLog.pushLine(data);
-//             widgets.chatLog.setScrollPerc(100);
-//             widgets.inputText.clearInput();
-//             // widgets.chatLog.focus();
-//             widgets.inputText.focus();
-//             widgets.screen.render();
-//             //SOCKET SEND MESSAGE
-//         }
-//     });
-//
-//     // widgets.inputText.on('cancel', function(){
-//     //     widgets.screen.render();
-//     // })
-//
-//     widgets.screen.key(['C-c'], function(ch, key) {
-//         process.exit(0);
-//     });
-//     widgets.screen.key(['tab'], function(ch, key) {
-//         return widgets.screen.focusNext();
-//     });
-//     widgets.screen.key(['S-tab'], function(ch, key) {
-//         return widgets.screen.focusPrevious();
-//     });
-// }
+    widgets.rl.setItems(['Room 1', 'Room 2', 'Room 3', 'Room 4']);
+    widgets.inputText.focus();
+    widgets.screen.render();
+
+
+function configureEventListeners(widgets){
+
+    widgets.inputText.on('submit', function(data) {
+        if (data && data.length !== 0) {
+            widgets.chatLog.pushLine(data);
+            widgets.chatLog.setScrollPerc(100);
+            widgets.inputText.clearInput();
+            // widgets.chatLog.focus();
+            widgets.inputText.focus();
+            widgets.screen.render();
+        }
+    });
+
+    // widgets.inputText.on('cancel', function(){
+    //     widgets.screen.render();
+    // })
+
+    widgets.screen.key(['C-c'], function(ch, key) {
+        process.exit(0);
+    });
+    widgets.screen.key(['tab'], function(ch, key) {
+        return widgets.screen.focusNext();
+    });
+    widgets.screen.key(['S-tab'], function(ch, key) {
+        return widgets.screen.focusPrevious();
+    });
+}
